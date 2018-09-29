@@ -118,7 +118,7 @@ react-native run-android --deviceId="DEVICE ID"
 
 **Debugging JS Remotely**
 
-If you run into problems when debuggin JS remotely and your browser is opened to this address `http://10.0.2.2:8081/debugger-ui` (happens usually on Android) please open [`http://localhost:8081/debugger-ui`](http://localhost:8081/debugger-ui) and reload the app by pressing (R,R), CMD+R or CTRL+R
+If you run into problems when debuggin JS remotely and your browser is opened to this address `http://10.0.2.2:8081/debugger-ui` (happens usually on Android) please open [`http://localhost:8081/debugger-ui`](http://localhost:8081/debugger-ui) and reload the app by pressing (<kbd>R</kbd>,<kbd>R</kbd>), <kbd>CMD</kbd>+<kbd>R</kbd> or <kbd>CTRL</kbd>+<kbd>R</kbd>
 
 **Error 500, index.\*.\* not found, red screen etc.**
 
