@@ -1,0 +1,40 @@
+{
+  "name": "react-native-training-server",
+  "version": "1.0.0",
+  "description": "React Native Training Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch src --exec babel-node ./src/index.js",
+    "test": "jest",
+    "prettier:check": "prettier --list-different 'src/**/*.js'",
+    "prettier:write": "prettier --write 'src/**/*.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "faker": "^4.1.0",
+    "immutable": "4.0.0-rc.9",
+    "luxon": "^1.4.1",
+    "ramda": "^0.25.0",
+    "random-js": "^1.0.8",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-prettier": "^2.7.0",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3"
+  }
+}

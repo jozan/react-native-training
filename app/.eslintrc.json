@@ -1,0 +1,26 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["react", "react-native", "promise"],
+  "extends": [
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:promise/recommended"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "env": {
+    "react-native/react-native": true
+  },
+  "globals": {
+    "__DEV__": true
+  },
+  "rules": {
+    "react/no-unused-prop-types": 0,
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 0,
+    "react-native/no-color-literals": 0
+  }
+}
