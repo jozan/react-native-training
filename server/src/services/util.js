@@ -49,10 +49,29 @@ export const servicify = objects => {
     return object;
   };
 
+  const update = (id, data) => {
+    let updatedResource = findById(id);
+    if (!updatedResource) {
+      return updatedResource;
+    }
+
+    resources = resources.update(id, resource => {
+      updatedResource = {
+        ...resource,
+        ...data
+      };
+
+      return updatedResource;
+    });
+
+    return updatedResource;
+  };
+
   return {
     all,
     findById,
     remove,
-    create
+    create,
+    update
   };
 };

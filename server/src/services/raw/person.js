@@ -18,11 +18,13 @@ const createPerson = () => {
     id: uuid(),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
+    avatar: faker.image.avatar(),
     birthDay: faker.date.past(70, '1999-01-01'),
     gender: r.pick(['m', 'f']),
     handedness: r.pick(['l', 'r']),
     salary: r.integer(2000, 10000),
     email: faker.internet.email(),
+    reports: [],
     relatedToCEO: r.pick([
       true,
       false,

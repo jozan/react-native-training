@@ -15,12 +15,20 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.json({ success: 'API server works! :-)' });
+});
+
 app.get('/person', async (req, res, next) => {
   const persons = await personService.all();
   res.json(persons);
 });
 
 app.post('/person', async (req, res, next) => {
+  if (!Object.values(req.body).length) {
+    res.status(400).send('no empty persons will be created');
+    return;
+  }
   const person = await personService.create(req.body);
   res.json(person);
 });
@@ -30,9 +38,21 @@ app.get('/person/:id', async (req, res, next) => {
 
   if (!person) {
     res.status(404).send('person not found');
+    return;
   }
 
   res.json(person);
+});
+
+app.put('/person/:id', async (req, res, next) => {
+  const updatedPerson = await personService.update(req.params.id, req.body);
+
+  if (!updatedPerson) {
+    res.status(404).send(`person not found with ID: ${req.param.id}`);
+    return;
+  }
+
+  res.json(updatedPerson);
 });
 
 app.delete('/person/:id', async (req, res, next) => {
