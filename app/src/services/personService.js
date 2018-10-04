@@ -3,7 +3,10 @@ import axios from 'axios';
 
 const { API_URL } = Config;
 
-const getPersons = () => axios.get(`${API_URL}/person`);
+const getPersons = async () => {
+  const response = await axios.get(`${API_URL}/person`);
+  return response.data;
+};
 
 export default {
   getPersons
