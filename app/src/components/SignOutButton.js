@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { withNavigation } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 import authService from '../services/authService';
 
 class SignOutButton extends React.Component {
@@ -17,7 +18,7 @@ class SignOutButton extends React.Component {
         onPress={this.handleSignOut}
         hitSlop={{ top: 24, left: 24, bottom: 24, right: 24 }}
       >
-        <View style={styles.button} />
+        <Icon name="md-log-out" size={24} color="tomato" />
       </RectButton>
     );
   }
