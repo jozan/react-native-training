@@ -8,7 +8,7 @@ import {
   Button,
   Animated
 } from 'react-native';
-
+import Draggable from '../components/Draggable';
 const { width: screenWidth } = Dimensions.get('window');
 
 export default class Person extends React.Component {
@@ -93,12 +93,17 @@ export default class Person extends React.Component {
           <Text>{person.firstName}</Text>
           <Text>{person.lastName}</Text>
         </View>
-        <Button title="Comrade" onPress={this.handleReportPress('Comrade')} />
-        <Button
-          title="Suspicious"
-          onPress={this.handleReportPress('Suspicious')}
-        />
-        <Button title="Traitor" onPress={this.handleReportPress('Traitor')} />
+        <View style={styles.draggables}>
+          <Draggable>
+            <Text style={styles.draggableText}>Comrade</Text>
+          </Draggable>
+          <Draggable>
+            <Text style={styles.draggableText}>Suspicious</Text>
+          </Draggable>
+          <Draggable>
+            <Text style={styles.draggableText}>Traitor</Text>
+          </Draggable>
+        </View>
       </View>
     );
   }
@@ -125,5 +130,17 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 4, height: 4 },
     textShadowRadius: 0,
     textShadowColor: 'rgba(0,0,0,0.15)'
+  },
+
+  draggables: {
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  draggableText: {
+    padding: 16,
+    backgroundColor: 'tomato',
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '700'
   }
 });
