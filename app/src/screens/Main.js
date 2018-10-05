@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import personService from '../services/personService';
 import PersonListItem from '../components/PersonListItem';
+import SignOutButton from '../components/SignOutButton';
 
 export default class Main extends Component {
+  static navigationOptions = {
+    headerRight: <SignOutButton />
+  };
+
   state = {
     persons: []
   };

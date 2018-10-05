@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Dimensions,
   Button,
-  Animated
+  Animated,
+  InteractionManager
 } from 'react-native';
 import Draggable from '../components/Draggable';
 const { width: screenWidth } = Dimensions.get('window');
@@ -19,11 +20,20 @@ export default class Person extends React.Component {
   });
 
   state = {
-    report: ''
+    report: '',
+    isLoading: true
   };
 
   animatedOpacity = new Animated.Value(0);
   animatedText = new Animated.Value(0);
+
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState(() => ({
+        isLoading: false
+      }));
+    });
+  }
 
   animate = toValue => {
     Animated.sequence([
@@ -42,11 +52,11 @@ export default class Person extends React.Component {
       ]),
       Animated.delay(3000),
       Animated.stagger(200, [
-        Animated.timing(this.animatedOpacity, {
+        Animated.timing(this.animatedText, {
           toValue: 0,
           useNativeDriver: true
         }),
-        Animated.timing(this.animatedText, {
+        Animated.timing(this.animatedOpacity, {
           toValue: 0,
           useNativeDriver: true
         })
@@ -54,7 +64,7 @@ export default class Person extends React.Component {
     ]).start();
   };
 
-  handleReportPress = report => () => {
+  handleDropzone = report => () => {
     this.animate(1);
 
     this.setState(() => ({
@@ -73,7 +83,10 @@ export default class Person extends React.Component {
     return (
       <View>
         <View>
-          <Image source={{ uri: person.avatar }} style={styles.avatar} />
+          {!this.state.isLoading && (
+            <Image source={{ uri: person.avatar }} style={styles.avatar} />
+          )}
+
           <Animated.View
             style={[styles.overlay, { opacity: this.animatedOpacity }]}
           >
@@ -94,13 +107,13 @@ export default class Person extends React.Component {
           <Text>{person.lastName}</Text>
         </View>
         <View style={styles.draggables}>
-          <Draggable>
+          <Draggable onDropzone={this.handleDropzone('Comrade')}>
             <Text style={styles.draggableText}>Comrade</Text>
           </Draggable>
-          <Draggable>
+          <Draggable onDropzone={this.handleDropzone('Suspicious')}>
             <Text style={styles.draggableText}>Suspicious</Text>
           </Draggable>
-          <Draggable>
+          <Draggable onDropzone={this.handleDropzone('Traitor')}>
             <Text style={styles.draggableText}>Traitor</Text>
           </Draggable>
         </View>
